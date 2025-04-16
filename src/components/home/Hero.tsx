@@ -6,7 +6,7 @@ export default function Hero() {
     <div className="relative min-h-screen bg-black text-white flex items-center justify-center">
       <div className="absolute inset-0">
         <Image
-          src="/nebulaflix.jpg"
+          src="/image1.jpg"
           alt="Nebula background"
           className="w-full h-full object-cover opacity-20"
           width={1920}
