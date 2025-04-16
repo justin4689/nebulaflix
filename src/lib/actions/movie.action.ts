@@ -1,7 +1,5 @@
-
 const API_KEY = process.env.TMDB_API_KEY;
 console.log(API_KEY);
-
 
 const BASE_URL = "https://api.themoviedb.org/3";
 
@@ -54,5 +52,31 @@ export async function getAllMovies(page: number = 1, query?: string) {
       total_results: 0,
       current_page: 1
     };
+  }
+}
+
+export async function getTrendingMovies() {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.TMDB_API_KEY}&language=fr-FR`
+    );
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching trending movies:', error);
+    return [];
+  }
+}
+
+export async function getUpcomingMovies() {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.TMDB_API_KEY}&language=fr-FR&region=FR`
+    );
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching upcoming movies:', error);
+    return [];
   }
 }

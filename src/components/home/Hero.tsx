@@ -18,8 +18,7 @@ export default function Hero() {
         <p className="text-xl md:text-2xl text-gray-300 mb-8">
           Unlimited Movies. One Universe. 🌌
         </p>
-        <Link
-          href="#popular"
+        <Link href={"/movies"}
           className="relative inline-block bg-gradient-to-r from-red-500  hover:from-purple-600 hover:to-purple-900 transition px-6 py-3 rounded text-lg font-semibold text-white shadow-md overflow-hidden z-10 group"
         >
           <span className="relative z-20">Explorer les films</span>
