@@ -32,8 +32,8 @@ export async function getMovieDetails(id: string) {
 export async function getAllMovies(page: number = 1, query?: string) {
   try {
     const url = query
-    ? `${BASE_URL}/search/movie?api_key=${process.env.TMDB_API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}&page=${page}`
-    : `${BASE_URL}/movie/popular?api_key=${process.env.TMDB_API_KEY}&language=fr-FR&page=${page}`;
+    ? `${BASE_URL}/search/movie?api_key=4ee3e74bd167eae28f74bd0d6d9f3ca8&language=fr-FR&query=${encodeURIComponent(query)}&page=${page}`
+    : `${BASE_URL}/movie/popular?api_key=4ee3e74bd167eae28f74bd0d6d9f3ca8&language=fr-FR&page=${page}`;
 
     const res = await fetch(url);
     const data = await res.json();
