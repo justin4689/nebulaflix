@@ -1,6 +1,8 @@
 import { getUpcomingMovies } from "@/lib/actions/movie.action";
 import Link from "next/link";
 
+import { Movie } from "@/lib/type/movie.type";
+
 export default async function UpcomingMovies() {
   const upcomingMovies = await getUpcomingMovies();
 
@@ -9,7 +11,7 @@ export default async function UpcomingMovies() {
       <section id="upcoming" className="container mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold mb-6">🎬 Films à Venir</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {upcomingMovies.map((movie: any) => (
+          {upcomingMovies.map((movie: Movie) => (
             <Link href={`/movies/${movie.id}`} key={movie.id}>
               <div className="bg-zinc-900 rounded shadow hover:scale-105 transition">
                 <img
