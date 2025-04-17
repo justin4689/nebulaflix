@@ -9,6 +9,7 @@ export default async function UpcomingMovies() {
       movies={upcomingMovies} 
       title="Prochaines Sorties" 
       emoji="🍿" 
+      id="upcoming"
     />
   );
 }

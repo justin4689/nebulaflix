@@ -1,11 +1,8 @@
-import Image from "next/image";
-import { getPopularMovies } from "@/lib/actions/movie.action";
-import Navbar from "@/components/home/Navbar";
+
 import Hero from "@/components/home/Hero";
 import PopularMovie from "@/components/home/PopularMovie";
 import TrendingMovies from "@/components/home/TrendingMovies";
 import UpcomingMovies from "@/components/home/UpcomingMovies";
-import Footer from "@/components/home/Footer";
 import { Suspense } from "react";
 import PopularSectionSkeleton from "@/components/home/PopularSectionSkeleton";
 

@@ -1,5 +1,6 @@
 // components/MovieCard.tsx
 
+import Image from "next/image";
 import Link from "next/link";
 
 interface MovieCardProps {
@@ -15,7 +16,7 @@ const MovieCard = ({ id, title, poster_path, release_date }: MovieCardProps) => 
       href={`/movies/${id}`}
       className="bg-zinc-900 rounded shadow hover:scale-105 transition"
     >
-      <img
+      <Image
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt={title}
         className="w-full h-72 object-cover rounded-t"

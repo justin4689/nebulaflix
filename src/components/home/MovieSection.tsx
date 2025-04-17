@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Movie } from "@/lib/type/movie.type";
 import Link from "next/link";
+import Image from "next/image";
 
 function useInView<T extends HTMLElement>(threshold = 0.1) {
   const [isInView, setIsInView] = useState(false);
@@ -45,13 +46,15 @@ function MovieCard({ movie, index }: { movie: Movie; index: number }) {
           }`}
         style={{ transitionDelay: `${index * 100}ms` }}
       >
-        <img
+        <Image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.original_title}
+          alt={movie.title}
+          width={500}
+          height={720}
           className="w-full h-auto rounded-t"
         />
         <div className="p-4">
-          <h3 className="font-semibold truncate">{movie.original_title}</h3>
+          <h3 className="font-semibold truncate">{movie.title}</h3>
           <p className="text-xs text-gray-400">{movie.release_date}</p>
         </div>
       </div>
@@ -62,18 +65,20 @@ function MovieCard({ movie, index }: { movie: Movie; index: number }) {
 export default function MovieSection({
   movies,
   title,
-  emoji
+  emoji,
+  id
 }: {
   movies: Movie[];
   title: string;
   emoji: string;
+  id: string;
 }) {
   const [titleRef, isTitleInView] = useInView<HTMLHeadingElement>(0.1);
-  const [gridRef, isGridInView] = useInView<HTMLDivElement>(0.1);
+  const [gridRef] = useInView<HTMLDivElement>(0.1);
 
   return (
-    <div className="bg-black text-white">
-      <section className="container mx-auto px-4 py-12">
+    <div id={id} className="bg-black text-white scroll-mt-20">
+      <section className="container mx-auto px-1 md:px-4 py-12">
         <h2 
           ref={titleRef}
           className={`text-3xl font-bold mb-6 transition-all duration-700 transform

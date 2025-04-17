@@ -9,6 +9,7 @@ export default async function PopularMovie() {
       movies={popularMovies} 
       title="Films Populaires" 
       emoji="🎥" 
+      id="popular"
     />
   );
 }

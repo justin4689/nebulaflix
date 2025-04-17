@@ -4,9 +4,10 @@ import MovieCard from "@/components/movies/MovieCard";
 import { getAllMovies } from "@/lib/actions/movie.action";
 import { useEffect, useState } from "react";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { Movie } from "@/lib/type/movie.type";
 
 export default function AllMoviesPage() {
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -49,7 +50,7 @@ export default function AllMoviesPage() {
   };
 
   return (
-    <div className="bg-black min-h-screen text-white p-6 mt-14 md:mt-8">
+    <div className="bg-black min-h-screen text-white p-4 md:p-6 mt-14 md:mt-8">
       {/* Search Bar */}
       <div className="relative mb-6">
         <input
@@ -70,7 +71,7 @@ export default function AllMoviesPage() {
       ) : (
         <>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {movies.map((movie: any) => (
+            {movies.map((movie: Movie) => (
               <MovieCard
                 key={movie.id}
                 id={movie.id}
@@ -86,7 +87,7 @@ export default function AllMoviesPage() {
             <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
-              className={`p-2 rounded-lg ${currentPage === 1 ? 'bg-gray-700 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+              className={`p-2 rounded-lg ${currentPage === 1 ? 'bg-gray-700 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'}`}
             >
               <ChevronLeft />
             </button>
@@ -96,7 +97,7 @@ export default function AllMoviesPage() {
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className={`p-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-700 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+              className={`p-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-700 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'}`}
             >
               <ChevronRight />
             </button>

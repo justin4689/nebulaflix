@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Movie } from "@/lib/type/movie.type";
+import Image from "next/image";
 
 function useInView(options = { threshold: 0.1 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,9 +41,11 @@ function MovieCard({ movie }: { movie: Movie }) {
             : "opacity-0 translate-y-20"
           }`}
       >
-        <img
+        <Image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.original_title}
+          alt={movie.title}
+          width={500}
+          height={720}
           className="w-full h-auto rounded-t"
         />
         <div className="p-4">

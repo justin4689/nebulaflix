@@ -3,10 +3,11 @@
 
 
 import { getMovieDetails } from '@/lib/actions/movie.action';
+import { Movie } from '@/lib/type/movie.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function MovieDetails({ params }: { params: { id: string } }) {
+export default async function MovieDetails({ params }: { params: Promise<{ id: string }> }) {
 
   const {id} =  await params;
   const movie = await getMovieDetails(id);
@@ -65,7 +66,7 @@ export default async function MovieDetails({ params }: { params: { id: string } 
               {releaseDate} • {hours}h {minutes}min
             </p>
             <div className="flex gap-2 mb-4">
-              {movie.genres.map((genre: any) => (
+              {movie.genres.map((genre: Movie) => (
                 <span
                   key={genre.id}
                   className="px-3 py-1 bg-purple-600 rounded-full text-sm"
@@ -101,14 +102,14 @@ export default async function MovieDetails({ params }: { params: { id: string } 
 
         <h2 className="text-2xl font-bold mb-4">Distribution principale</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {movie.credits.cast.slice(0, 6).map((actor: any) => (
+          {movie.credits.cast.slice(0, 6).map((actor: Movie) => (
             <div key={actor.id} className="text-center">
               <div className="relative w-full aspect-[2/3] mb-2">
                 <Image
-                  src={actor.profile_path
+                  src={actor.profile_path != null
                     ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
                     : '/placeholder-actor.jpg'}
-                  alt={actor.name}
+                  alt={actor.name ?? 'Actor'}
                   fill
                   style={{ objectFit: 'cover' }}
                   className="rounded-lg"
@@ -126,7 +127,7 @@ export default async function MovieDetails({ params }: { params: { id: string } 
         <div className="p-8">
           <h2 className="text-2xl font-bold mb-4">Films similaires</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {movie.similar.results.slice(0, 6).map((similar: any) => (
+            {movie.similar.results.slice(0, 6).map((similar: Movie) => (
               <Link
                 href={`/movies/${similar.id}`}
                 key={similar.id}
@@ -134,10 +135,10 @@ export default async function MovieDetails({ params }: { params: { id: string } 
               >
                 <div className="relative w-full aspect-[2/3] mb-2">
                   <Image
-                    src={similar.poster_path
+                    src={similar.poster_path != null
                       ? `https://image.tmdb.org/t/p/w300${similar.poster_path}`
                       : '/placeholder-movie.jpg'}
-                    alt={similar.title}
+                    alt={similar.title ?? 'Movie'}
                     fill
                     style={{ objectFit: 'cover' }}
                     className="rounded-lg"

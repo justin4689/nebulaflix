@@ -9,6 +9,7 @@ export default async function TrendingMovies() {
       movies={trendingMovies} 
       title="Films Tendances" 
       emoji="🔥" 
+      id="trending"
     />
   );
 }
