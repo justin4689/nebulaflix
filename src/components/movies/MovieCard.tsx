@@ -19,6 +19,8 @@ const MovieCard = ({ id, title, poster_path, release_date }: MovieCardProps) => 
       <Image
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt={title}
+        width={500}
+        height={750}
         className="w-full h-72 object-cover rounded-t"
       />
       <div className="p-2">

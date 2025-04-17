@@ -8,7 +8,7 @@ import PopularSectionSkeleton from "@/components/home/PopularSectionSkeleton";
 
 export default async function Home() {
   return (
-    <div>
+    <div >
       <Hero />
       <Suspense fallback={<PopularSectionSkeleton />}>
         <PopularMovie />

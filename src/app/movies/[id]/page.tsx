@@ -37,7 +37,7 @@ export default async function MovieDetails({ params }: { params: Promise<{ id: s
   return (
     <div className="min-h-screen bg-black text-white mt-16 md:mt-9">
       {/* Hero Section with Backdrop */}
-      <div className="relative h-[60vh] w-full">
+      <div className="relative h-[60vh] w-full ">
         <div className="absolute inset-0">
           <Image
             src={backdropPath}
@@ -50,8 +50,8 @@ export default async function MovieDetails({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Movie Info Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 flex gap-8">
-          <div className="relative w-48 h-72 flex-shrink-0">
+        <div className="absolute  bottom-0 left-0 right-0 p-4 pb-8 md:p-8 md:pb-12 flex flex-col md:flex-row gap-4 md:gap-8">
+          <div className="relative w-32 h-48 md:w-48 md:h-72 flex-shrink-0 mx-auto md:mx-0 py-6">
             <Image
               src={posterPath}
               alt={movie.title}
@@ -60,12 +60,12 @@ export default async function MovieDetails({ params }: { params: Promise<{ id: s
               className="rounded-lg shadow-2xl"
             />
           </div>
-          <div className="flex-1">
-            <h1 className="text-4xl font-bold mb-2">{movie.title}</h1>
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-2xl md:text-4xl font-bold mb-2">{movie.title}</h1>
             <p className="text-gray-300 mb-4">
               {releaseDate} • {hours}h {minutes}min
             </p>
-            <div className="flex gap-2 mb-4">
+            <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
               {movie.genres.map((genre: Movie) => (
                 <span
                   key={genre.id}
